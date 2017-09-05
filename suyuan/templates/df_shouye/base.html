@@ -1,0 +1,54 @@
+{% extends 'base_foot.html' %}
+{%block head%}
+<meta charset="utf-8" />
+<script src="/static/js/jquery.min.js"></script>
+<link rel="stylesheet" href="/static/css/newTrace.css">
+<link rel="stylesheet" href="/static/css/mymain.css">
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/swiper/swiper.min.css"></script>
+<link rel="stylesheet" href="/static/swiper/swiper.min.css">
+{%endblock head%}
+{% block body %}
+    <div class="topwrapper">
+         <div class="topbar topbar-login">
+             <div class="w1030">
+              <span class="login fr Unlogin">
+                <a href="/user/login/" id="BtnLogin">登录</a>|<a href="/user/register/" >免费注册</a>
+              </span>
+              <div class="dropdown login-dropdown fr Hadlogin hide"> <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="javascript:;"><span id="loginuser"> brackets@adobe.com</span> <b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li id="btnUserCenter" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:;">用户中心</a></li>
+                    <li id="BtnUpdatePwd" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:;">修改密码</a></li>
+                    <li id="OutWeb" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:;">退出</a></li>
+                </ul>
+              </div>
+
+             </div>
+         </div>
+
+         <div class="header">
+            <div class="w1030">
+             <div class="logo fl">
+{#                 <a href="/AgriProTraceability/queryEntrance.html"><i class="logo_tcloudit"></i></a>#}
+                 <div style="width:160px;height: 50px;">
+                     <embed wmode="transparent" autostart="true" loop="-1" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.swf" quality="high" bgcolor="#ffffff" width="160" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+                 </div>
+             </div>
+             <div class="nav fl" id="TopNav">
+             <ul>
+                <li><a href="/shouye/index/">首页</a></li>
+                <li><a href="/AgriProTraceability/tctrace_product.html">产品库</a></li>
+                <li><a href="/AgriProTraceability/about.html">帮助</a></li>
+             </ul>
+             </div>
+             <div class="search fr">
+                 <input  class="s-input search-input" placeholder="搜索产品" />
+                 <a class="btn-search"><i class="icon-search"></i></a>
+             </div>
+          </div>
+         </div>
+    </div>
+
+    {% block content %}{% endblock content %}
+{% endblock body %}

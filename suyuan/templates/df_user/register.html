@@ -1,0 +1,110 @@
+{%extends 'base_foot.html'%}
+
+{%block head%}
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/register.js"></script>
+    <script type="text/javascript">
+        var curCount;
+        var count = 60;
+        var InterValObj;
+        var phone_number;
+        function sendMessage(){
+            phone_number = document.getElementById("phone").value
+            if(phone_number) {
+                curCount = count;
+                document.getElementById("getCode").setAttribute("disabled", "true");
+                document.getElementById("getCode").value = "waiting for "+curCount+"s";
+                InterValObj = window.setInterval(SetRemainTime, 1000);
+                loadXMLDoc();
+            }
+            else {
+                alert('Please input phone number!')
+            }
+        }
+        function SetRemainTime(){
+            if (curCount == 0){
+                window.clearInterval(InterValObj);
+                document.getElementById("getCode").removeAttribute("disabled");
+                document.getElementById("getCode").value = "Get New Code";
+            }
+            else{
+                curCount--;
+                document.getElementById("getCode").value = "waiting for "+curCount+"s";
+            }
+        }
+        function loadXMLDoc(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "/user/register_handle?mobile_phone_number=" + phone_number, true);
+            xmlhttp.send();
+        }
+    </script>
+{%endblock head%}
+
+{%block body%}
+
+	<div class="register_con">
+		<div class="l_con fl">
+            <a class="reg_logo"><img src="/static/images/ANlogo.png"></a><br/>
+			<div class="reg_slogan">食品安全  ·  从这里开始</div>
+			<div class="reg_banner"></div>
+		</div>
+
+		<div class="r_con fr">
+			<div class="reg_title clearfix">
+				<h1>用户注册</h1>
+				<a href="/user/login/">登录</a>
+			</div>
+			<div class="reg_form clearfix">
+				<form action="/user/register_handle/" method="post" id="reg_form">
+					{%csrf_token%}
+				<ul>
+					<li>
+						<label>用户名:</label>
+						<input type="text" name="user_name" id="user_name">
+						<span class="error_tip">提示信息</span>
+					</li>					
+					<li>
+						<label>密码:</label>
+						<input type="password" name="pwd" id="pwd">
+						<span class="error_tip">提示信息</span>
+					</li>
+					<li>
+						<label>确认密码:</label>
+						<input type="password" name="cpwd" id="cpwd">
+						<span class="error_tip">提示信息</span>
+					</li>
+					<li>
+						<label>邮箱:</label>
+						<input type="text" name="email" id="email">
+						<span class="error_tip">提示信息</span>
+					</li>
+                    <li>
+                        <label>手机号码：</label>
+                        <input type="text" name="phone" id="phone" placeholder="Phone Number"/>
+                        <span class="error_tip">提示信息</span>
+                    </li>
+                    <li>
+                        <label>验证码：</label>
+                        <input type="text" name="code" id="code" placeholder="验证码" style="position:relative;width:100px;"/>
+                        <input type="button" id="getCode" onclick="sendMessage()" style="position:relative;width:100px;left:10px" value="获取验证码"/>
+                    </li>
+                    {% if error_msg %}
+                        <li style="height: 30px">
+                            <p style="color:red">{{ error_msg }}</p>
+                        </li>
+                    {% endif %}
+					<li class="agreement">
+						<input type="checkbox" name="allow" id="allow" checked="checked">
+						<label>同意”农产品溯源平台用户使用协议“</label>
+						<span class="error_tip2">提示信息</span>
+					</li>
+					<li class="reg_sub">
+						<input type="submit" value="注 册">
+					</li>
+				</ul>				
+				</form>
+			</div>
+		</div>
+	</div>
+
+{%endblock body%}

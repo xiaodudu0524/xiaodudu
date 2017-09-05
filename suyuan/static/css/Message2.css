@@ -1,0 +1,114 @@
+.mr15{margin-right:15px}
+
+.filter { height:40px }
+.filter .btn-search-white, .filter .btn-search-white:hover { background: #429545 url(../Images/newMessage/icon-search-white.png) center center no-repeat; }
+.filter .btn_green.btn-search-white{border-radius:0}
+
+
+
+.message-wrap { border:1px solid #ddd; overflow:hidden }
+.message-wrap .col-left { width:348px; float:left; border-right:1px solid #ddd }
+.message-wrap .col-right { width:629px; float:right; }
+.message-wrap .sendnews{padding:20px}
+
+
+/*å·¦ä¾§æ¶ˆæ¯æ¨¡å—åˆ—è¡¨*/
+.msg-list .msg_card { padding:20px 30px 15px 30px; border-bottom:1px solid #ddd; position:relative; height:117px; font-size:14px; cursor:pointer}
+.msg-list .msg_card:hover {background: #f5f6f8;}
+.msg-list .msg_card:last-child { margin-bottom:0 }
+.msg-list .msg_card .hd { overflow:hidden; }
+.msg-list .msg_card .hd .name { color:#222 }
+.msg-list .msg_card .hd .date {float:right;color:#bbb; }
+.msg-list .msg_card .hd .sendto { color:#aaa; font-size:13px }
+.msg-list .msg_card .bd { padding:10px 0px; line-height:18px; word-break:break-all; word-wrap:break-word; font-size:13px;height:36px}
+.msg-list .msg_card .ft { line-height:16px }
+.msg-list .msg_card .ft .icon { float:left; margin-right:5px; width:18px; height:15px; display:inline-block; line-height:15px }
+.msg_card .ft .icon-img { background:url(../Images/newMessage/ic-img.png) 0 0 no-repeat; }
+.msg-list .msg_card .ft .icon-reply { background:url(../Images/newMessage/ic-reply.png) 0 0 no-repeat; }
+.msg-list .msg_card .ft .ic_attach { width:12px; height:16px; background:url(../Images/newMessage/ic_attach.png) 0 0 no-repeat; }
+.msg-list .msg_card .border-left { width:6px; height:153px; background:#2d8931; position:absolute; left:0; display:none; top:0 }
+.msg-list .msg_card .btn_reply { background:#2d8931; border-radius: 10px; color:#fff; font-size:12px; padding:0px 10px; height:20px; line-height:20px; display:inline-block; cursor:pointer }
+.msg-list .msg_card .btn_reply .icon-arrow-white { width:6px; height:9px; display:inline-block; background:url(../Images/newMessage/arrow_white.png) 0 0 no-repeat; margin-left:10px }
+.msg-list .msg_card.new-msg .border-left { display:block }
+.msg-list .msg_card.selected-msg { background:#f4f5f7 }
+.msg-list .msg_card.new-msg .hd .date { color:#2d8931}
+.msg-list .msg_card.selected-msg .hd .date { color:#bbb;}
+
+
+
+.panel_msg_detail .hd { padding:20px 30px 0px 0px; height:48px }
+.panel_msg_detail .hd .widget-thumb .avatar-face { width: 48px; height: 48px; position:relative; display:inline-block }
+.panel_msg_detail .hd .widget-thumb .avatar-face .icon_new_commont { width:19px; height:19px; display:inline-block; background:url(../Images/newMessage/icon_new_commont2.png) 0 0 no-repeat; position:absolute; left:0; top:30px; display:none }
+.post-title { padding-left:90px; font-size:14px; line-height:24px }
+.post-title .widget-thumb { margin-left:-90px; width:70px; float:left; text-align:right }
+.post-title .name { color:#222 }
+.post-title .date { color:#bbb }
+.post-title .sendto { font-size:13px; color:#aaa; position:relative }
+.post-title .sendto .showinfolink { color:#2d8931 }
+.post-title .popup_receiver { position:absolute; background:#fff; border:1px solid #ddd; z-index:1; width:298px; top:-5px; right:100px; border-radius: 3px; display:none }
+.post-title .popup_receiver .receiver { padding:15px 20px; position:relative }
+.post-title .popup_receiver .receiver .arrow-left { width:7px; height:12px; display:inline-block; background:url(../Images/newMessage/arrow-right.png) 0 0 no-repeat; position:absolute; top:10px; right:-7px }
+.post-title .popup_receiver .receiver .icon-close { width:12px; height:12px; display:inline-block; background:url(../Images/newMessage/icon-close.png) 0 0 no-repeat; position:absolute; right:10px; cursor:pointer;top:10px}
+.post-title .popup_receiver .receiver .total { color:#222; padding-bottom:10px }
+.post-title .popup_receiver .receiver .receiver-name { line-height:20px; color:#777; max-height:150px; overflow:auto }
+.post-title .popup_receiver .receiver .receiver-name span { white-space:nowrap; display:inline-block }
+
+.panel_msg_detail .bd { font-size:14px; padding:0px 20px 20px 90px; }
+.panel_msg_detail .con-text { font-size:13px; line-height:18px; margin-bottom:10px;word-break: break-all;
+word-wrap: break-word;}
+.panel_msg_detail .con-img { padding-bottom:15px }
+.panel_msg_detail .con-img img { width:90px; height:90px; margin-right:10px }
+.panel_msg_detail .action { overflow:hidden; font-size:14px }
+.panel_msg_detail .action a { color:#888; display:inline-block}
+.panel_msg_detail .btn-fwd { width:24px; height:19px; display:inline-block; float:left; background:url(../Images/newMessage/ic-fwd-big.png) 0 0 no-repeat; line-height:19px; margin-right:10px; }
+.panel_msg_detail .attachment { padding:15px 0px; border-top:1px solid #eee; font-size:13px;max-height:120px; overflow:auto;}
+.panel_msg_detail .attachment h4 { color:#222; font-weight:normal }
+.panel_msg_detail .attachment p { line-height:22px }
+.panel_msg_detail .attachment p a { color:#aaa }
+.panel_msg_detail .comment-list { padding:15px 0px; margin:0px 30px }
+.panel_msg_detail .comment-title { font-size:14px; color:#222; margin-bottom:20px }
+.panel_msg_detail .comment-li { overflow:hidden; margin-bottom:15px; padding-left:60px; border-bottom:1px solid #eee ; overflow:auto}
+.panel_msg_detail .commentChildren-li { overflow:hidden; margin-bottom:15px; margin-left:70px; border-bottom:1px solid #eee ; overflow:auto}
+.panel_msg_detail .commentChildren-li .name{ color:#222;font-size: 13px;margin-bottom:5px; display:inline-block}
+.panel_msg_detail .comment-li:last-child { border-bottom:none; margin-bottom:0 }
+.panel_msg_detail .comment-li .avatar-face { width:50px; margin-left:-60px; float:left; padding-left:10px }
+.panel_msg_detail .comment-li .name { font-size:14px; color:#222 }
+.panel_msg_detail .comment-li .date { color:#aaa }
+.panel_msg_detail .comment-li .con-text { padding-top:3px }
+
+
+.comment-area { border-top:1px solid #ddd }
+.comment-area .reply { padding:20px 30px }
+.comment-area .reply-input { border:1px solid #ddd; border-radius: 3px; height:38px; line-height:38px; font-size:14px; color:#bbb; text-indent:20px }
+.comment-area .comment-form { padding:20px 30px }
+.comment-area .comment-form .input_comment { width:100%; border:none; font-size: 13px; line-height:20px; color:#777; overflow:auto; padding:10px 0px; outline:0;height:60px;resize:none}
+.comment-area .reply-content { border:1px solid #aaa; padding:0px 10px; overflow:auto;border-radius: 3px;}
+.comment-area .reply-content .attachment { padding:5px 15px 5px 0px}
+.comment-area .ic_attach { float: left; margin-right: 5px; display: inline-block; line-height: 15px; width:12px; height:16px; background:url(../Images/newMessage/ic_attach.png) 0 0 no-repeat;}
+.comment-area .icon-img { float: left; margin-right: 5px; display: inline-block; line-height: 15px; width:18px; height:15px; background:url(../Images/newMessage/ic-img.png) 0 0 no-repeat;margin-top:8px}
+.comment-area .comment-form .action { padding-top:20px; line-height:30px }
+.comment-area .comment-form .action .ic_attach { margin-top:8px }
+.comment-area .comment-form .action .btn_comment { width:100px; height:30px; display:inline-block; text-align:center; border:1px solid #2d8931; margin-right:10px; background:#2d8931; line-height:30px; color:#fff; font-size:13px; border-radius: 3px; }
+.comment-area .comment-form .action .btn_comment:hover{background: #329938;}
+.comment-area .comment-form .action .btn_comment:active{background: #26732a;}
+.comment-area .comment-form .action .btn_cancel { width:100px; height:30px; display:inline-block; text-align:center; border:1px solid #ddd; line-height:30px; font-size:13px; border-radius: 3px; }
+.comment-area .comment-form .action .btn_cancel:hover{border: 1px solid #bbb;}
+.comment-area .comment-form .action .btn_cancel:active{background: #f0f0f0;border: 1px solid #aaa;}
+
+
+#sendNews{ overflow:auto}
+.sendnews .hd{padding-bottom:20px}
+.sendnews .hd .btn-back{ line-height:28px; font-size:18px; font-weight:bold; display:inline-block}
+.sendnews .hd .btn-back .icon-back{ background: url(../images/common/forback.gif) 0 0 no-repeat; width: 28px; height: 28px; display: inline-block; cursor: pointer; float:left;margin-right:10px }
+.sendnews .attachment {border-top: 1px solid #eee;font-size: 13px;max-height: 120px;overflow: auto;}
+.sendnews .attachment h4 { color:#222; font-weight:normal }
+.sendnews .attachment p { line-height:22px }
+.sendnews .attachment p a { color:#aaa }
+.sendnews .ic_attach { float: left; margin-right: 5px; display: inline-block; line-height: 15px; width:12px; height:16px; background:url(../Images/newMessage/ic_attach.png) 0 0 no-repeat;margin-top:6px;}
+.sendnews .reply-content { border:1px solid #ddd;overflow:auto;border-radius: 3px;width:605px}
+.sendnews .btn-addAttachment{ display:inline-block}
+.sendnews .reply-content .attachment { padding:5px 15px 5px 10px}
+.sendnews .newssection .input-text{border:none;width:100%;resize:none}
+.sendnews .icon-img { float: left; margin-right: 5px; display: inline-block; line-height: 15px; width:18px; height:15px; background:url(../Images/newMessage/ic-img.png) 0 0 no-repeat;margin-top:6px}
+.sendnews .action a{ display:inline-block}
+

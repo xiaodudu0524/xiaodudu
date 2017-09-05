@@ -1,0 +1,190 @@
+{%extends 'base_foot.html'%}
+{%block head%}
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/static/css/newTrace.css">
+<link rel="stylesheet" href="/static/css/mymain.css">
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+{#<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>#}
+<script>
+    $(function () {
+        $(".icon-search").click(function () {
+            alert('asdasdas')
+        });
+    })
+</script>
+{%endblock head%}
+
+{% block body %}
+<div class="topwrapper">
+     <div class="topbar topbar-login">
+         <div class="w1030">
+          <span class="login fr Unlogin">
+            <a href="/user/login/" id="BtnLogin">登录</a>|<a href="/user/register/" >免费注册</a>
+          </span>
+          <div class="dropdown login-dropdown fr Hadlogin hide"> <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="javascript:;"><span id="loginuser"> brackets@adobe.com</span> <b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li id="btnUserCenter" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:;">用户中心</a></li>
+                <li id="BtnUpdatePwd" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:;">修改密码</a></li>
+                <li id="OutWeb" role="presentation"><a role="menuitem" tabindex="-1" href="javascript:;">退出</a></li>
+            </ul>
+          </div>
+
+         </div>
+     </div>
+
+     <div class="header">
+        <div class="w1030">
+         <div class="logo fl">
+{#             <a href="/AgriProTraceability/queryEntrance.html"><i class="logo_tcloudit"></i></a>#}
+             <div style="width:160px;height: 70px;">
+             <embed wmode="transparent" autostart="true" loop="-1" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.swf" quality="high" bgcolor="#ffffff" width="160" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+             </div>
+         </div>
+         <div class="nav fl" id="TopNav">
+         <ul>
+            <li><a href="/shouye/index/">首页</a></li>
+            <li><a href="/AgriProTraceability/tctrace_product.html">产品库</a></li>
+            <li><a href="/AgriProTraceability/about.html">帮助</a></li>
+         </ul>
+         </div>
+         <div class="search fr">
+             <input  class="s-input search-input" placeholder="搜索产品" />
+             <a class="btn-search"><i class="icon-search"></i></a>
+         </div>
+      </div>
+     </div>
+</div>
+{#    #}
+<div class="midwrapper">
+    <div class="w1030 clearfix" id="prolist">
+       <div class="main">
+            <div class="section-first clearfix">
+
+                <div id="myCarousel" class="carousel slide" style="width: 778px;height: 369.54px">
+                    <!-- 轮播（Carousel）指标 -->
+                    <ol class="carousel-indicators" >
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                    </ol>
+                    <!-- 轮播（Carousel）项目 -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="/static/images/slide_01.png" alt="First slide">
+
+                        </div>
+                        <div class="item">
+                            <img src="/static/images/slide_02.png" alt="Second slide">
+
+                        </div>
+
+                    </div>
+                    <!-- 轮播（Carousel）导航 -->
+                    <a class="carousel-control left" href="#myCarousel" data-slide="prev" >&lsaquo;</a>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                </div>
+                <div class="extra" style="height: 369.54px">
+                    <div class="mc">
+                        <p class="title">
+                            溯源档案查询</p>
+                        <p>
+                            <input style="width: 100%" type="text" class="form-text form-text-block" placeholder="请输入14位追溯码" id="txtBatchID" />
+                        </p>
+                        <p class="mt20">
+                            <a href="javascript:void(0);" class="btn btn-block btn-search" id="J_btnSearch">
+                                查询</a></p>
+                        <div class="action">
+                            <a href="javascript:;" id="btnPublish" class="btn btn-block btn-create ">发布档案</a>
+                            <!--<p class="mt20 ac link"><a href="javascript:;" class="BtnLogin">登录</a><em class="mlr5">|</em><a href="/AgriProTraceability/91QueryEntrance/TraceabilityReg.html">注册</a></p>-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+{#            三个大的分类#}
+           <div class="t-section clearfix mod-product fresh-market">
+               <div class="titlebar">
+                   <span class="more fr">
+                       <a href="/shouye/list1_1_1/"><i class="arrow-more"></i>更多产品</a>
+                   </span>
+                   <span class="col-name">新鲜上市</span>
+               </div>
+               <div class="bd" style="height: 350px;width: 1030px">
+                   <ul class="product-list">
+                       {% for g in type1 %}
+                           <li class="product">
+                               <a href="/shouye/{{ g.id }}" target="_blank">
+                                   <p class="pic">
+                                       <img src="/static/{{ g.gpic }}" style="width:245px">
+                                   </p>
+                                   <div class="info">
+                                       <p class="name">{{ g.gtitle|slice:'5' }}</p>
+                                       <p class="date">上市时间：{{ g.gtime }}</p>
+                                   </div>
+                               </a>
+                           </li>
+                       {% endfor %}
+
+                   </ul>
+               </div>
+           </div>
+
+           <div class="t-section clearfix mod-product fresh-market">
+               <div class="titlebar">
+                   <span class="more fr">
+                       <a href="/shouye/list2_1_1"><i class="arrow-more"></i>更多产品</a>
+                   </span>
+                   <span class="col-name">热门推荐</span>
+               </div>
+               <div class="bd">
+                   <ul class="product-list">
+                       {% for g in type2 %}
+                           <li class="product">
+                               <a href="/shouye/{{ g.id }}" target="_blank">
+                                   <p class="pic">
+                                       <img src="/static/{{ g.gpic }}" style="width:245px">
+                                   </p>
+                                   <div class="info">
+                                       <p class="name">{{ g.gtitle|slice:'5' }}</p>
+                                       <p class="date">上市时间：{{ g.gtime }}</p>
+                                   </div>
+                               </a>
+                           </li>
+                       {% endfor %}
+
+                   </ul>
+               </div>
+           </div>
+
+            <div class="t-section clearfix mod-product fresh-market">
+               <div class="titlebar">
+                   <span class="more fr">
+                       <a href="/shouye/list3_1_1"><i class="arrow-more"></i>更多产品</a>
+                   </span>
+                   <span class="col-name">人气最高</span>
+               </div>
+               <div class="bd">
+                   <ul class="product-list">
+                       {% for g in type3 %}
+                           <li class="product">
+                               <a href="/shouye/{{ g.id }}" target="_blank">
+                                   <p class="pic">
+                                       <img src="/static/{{ g.gpic }}" style="width:245px">
+                                   </p>
+                                   <div class="info">
+                                       <p class="name">{{ g.gtitle|slice:'5' }}</p>
+                                       <p class="date">上市时间：{{ g.gtime }}</p>
+                                   </div>
+                               </a>
+                           </li>
+                       {% endfor %}
+
+                   </ul>
+               </div>
+            </div>
+       </div>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,95 @@
+
+.attachment { 
+	line-height: 30px;
+	overflow : visible;border: 1px solid #e5e5e5;
+	border-width: 1px 0;
+	border: 0 none;
+	background: 0; 
+	height: auto; 
+} 
+.attachment li {
+	margin:0px 5px 2px 0;
+	padding: 0;
+	float: left;
+	clear: inherit;
+}
+.attachment li a {
+	margin: 0;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-left: 1px solid whiteSmoke;
+	border-right: 1px solid #e5e5e5;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	
+	position: relative;
+	display: block;
+	_display: inline;
+	_zoom: 1;
+	height: 22px;
+	line-height: 22px;
+	background: #2d8931;
+	color: #fff;
+	white-space: nowrap;
+	padding: 0px 60px 0px 5px;
+} 
+.icon-close {
+	background: #2d8931;
+	width: 24px;
+	height: 22px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	margin:0px;
+	text-align:center;
+}
+.icon-close i{
+	background:url(/Images/common/close.png) 0 0 no-repeat;
+	display:inline-block;
+	width:16px;
+	height:16px;
+	margin-top:2px;
+}
+
+.attachment a .icon-close {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 24px;
+	height: 22px;
+	cursor:pointer;
+}
+
+.icon-editAttachmentName {
+	background: #2d8931;
+	width: 24px;
+	height: 22px;
+	position: absolute;
+	right: 30px;
+	top: 0px;
+	margin:0px;
+	text-align:center;
+}
+.icon-editAttachmentName i{
+	background:url(/Images/common/edit.png) 0 0 no-repeat;
+	display:inline-block;
+	width:16px;
+	height:16px;
+	margin-top:2px;
+}
+
+.attachment a .icon-editAttachmentName {
+	position: absolute;
+	right: 30px;
+	top: 0px;
+	width: 24px;
+	height: 22px;
+	cursor:pointer;
+}
+
+/*上传图片按钮美化*/
+.upload-btn { display: inline-block; margin-bottom: 0; font-size: 12px; font-weight: normal; line-height: 1.428571429; text-align: center; white-space: nowrap; vertical-align: middle; cursor: pointer; border: 1px solid transparent; border-radius: 4px; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none; color:#777; }
+.upload-btn{ display:inline-block;padding:0px 12px;height:30px; line-height:30px;border:1px solid #ddd;border-radius:4px; font-size:12px; color:#8e8e8e}
+.fileinput-button { position: relative; overflow: hidden; }
+.fileinput-button input { position: absolute; top: 0; left: 0; margin: 0; opacity: 0; filter: alpha(opacity=0); transform: translate(-300px, 0) scale(4); font-size: 23px; direction: ltr; cursor: pointer; height:34px; }

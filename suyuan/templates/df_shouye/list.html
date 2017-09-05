@@ -1,0 +1,65 @@
+{% extends 'df_shouye/base.html' %}
+
+{% block content %}
+    <div class="midwrapper">
+    <div class="clearfix w1030">
+        <div id="filter" class="t-section trace-filter">
+            <div class="breadcrumb clearfix">
+                <div class="cat"><a href="/shouye/index/">首页</a></div>
+                <div class="cat">
+                    <em class="mr10"> > </em>
+                    <a href="#">全部产品</a>
+                </div>
+            </div>
+        </div>
+        <div class="t-section">
+            <div class="toolbar clearfix">
+                <dl class="order">
+                    <dt>排序：</dt>
+                    <dd class="btn first curr">
+                        <a href="/shouye/list{{ typeinfo.id }}_1_1/">默认</a>
+                    </dd>
+                    <dd class="btn">
+                        <a href="/shouye/list{{ typeinfo.id }}_1_2/">点击量</a>
+                    </dd>
+                    <dd class="btn">
+                        <a href="#">评价</a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="mainview clearfix">
+                <ul>
+                    {% for g in page %} {# 这里面的g 就是GoodsInfo对象 #}
+                        <li class="product">
+                            <a href="/shouye/{{ g.id }}" target="_blank">
+                                <p class="pic">
+                                    <img src="/static/{{ g.gpic }}">
+                                </p>
+                                <p class="name">{{ g.gtitle }}</p>
+                                <p style="width: 200px">上市时间：{{ g.gtime }}</p>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="mypagination" >
+                {%if page.has_previous%}
+				    <a href="/shouye/list{{typeinfo.id}}_{{page.previous_page_number}}_{{sort}}/">上一页</a>
+				{%endif%}
+
+				{%for index in paginator.page_range%}
+                    {%if index == page.number%}
+                        <a href="#" class="active">{{index}}</a>
+                    {%else%}
+                        <a href="/shouye/list{{typeinfo.id}}_{{index}}_{{sort}}/">{{index}}</a>
+                    {%endif%}
+				{%endfor%}
+
+				{%if page.has_next%}
+				    <a href="/shouye/list{{typeinfo.id}}_{{page.next_page_number}}_{{sort}}/">下一页></a>
+				{%endif%}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

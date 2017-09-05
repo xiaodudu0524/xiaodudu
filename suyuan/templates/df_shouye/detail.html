@@ -1,0 +1,356 @@
+{% extends 'df_shouye/base.html' %}
+{% block content %}
+<style type="text/css">
+        .newArchives-wrap
+        {
+            width: 100% !important;
+        }
+        .exploratory-wrap .w980
+        {
+            width: 100% !important;
+        }
+        .trace-detail .mc
+        {
+            width: 978px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .trace-detail .title
+        {
+            background: #116633 !important;
+        }
+</style>
+
+<div class="midwrapper">
+    <div class="clearfix">
+        <div id="danganContent" class="clearfix">
+            <link rel="stylesheet" type="text/css" href="/static/css/jquery.wysiwyg.css">
+            <link rel="stylesheet" type="text/css" href="/static/css/Attachment.css">
+            <link rel="stylesheet" type="text/css" href="/static/css/Message2.css">
+            <link rel="stylesheet" type="text/css" href="/static/css/exploratory.css">
+            <link rel="stylesheet" type="text/css" href="/static/css/toolcloud_trace.css">
+            <link rel="stylesheet" type="text/css" href="/static/css/mymain.css">
+            <link rel="stylesheet" href="/static/css/trace.css">
+            <link href="/static/css/ueditor.css" rel="stylesheet">
+            <script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+            <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+	        <script type="text/javascript" src="/static/js/slide.js"></script>
+
+            <div class="newArchives-wrap">
+                <div class="NewArchivesDetail">
+                    <div id="content" class="exploratory-wrap clearfix">
+                        <div class="w980 clearfix">
+                            <div class="trace-detail clearfix">
+                                <div class="title" id="traceTitle">{{ g.company_name }}</div>
+                                <div class="mc">
+                                    <div class="side-qrcode">
+                                        <div class="qrcode" id="qrcodeTracebility">
+                                            <p>
+                                                <img width="60" height="60" src="">
+                                            </p>
+                                            <p class="mt5">
+                                                溯源二维码<br>
+                                                点击放大
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="summary clearfix">
+                                        <div class="main-left">
+                                            <div class="produce-info">
+                                                <p class="pic" id="produce_photo">
+                                                    <img src="/static/{{ g.gpic }}" width="300px">
+                                                </p>
+                                                <p class="sub-title">
+                                                    <span class="col-name" id="produce_name">{{ g.gtitle }}</span>
+                                                </p>
+                                                <div class="statistics mt10">
+                                                    <ul>
+                                                        <li>
+                                                            <p>品种</p>
+                                                            <p class="value" id="cropname">{{ g.gtitle }}</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>上市时间</p>
+                                                            <p class="value date">{{ g.gtime }}</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>顾客评分</p>
+                                                            <div class="value rate studyplay_starbg">
+                                                                <ul class="starbg">
+                                                                    <li class="starovering" style="width: 0px"></li>
+                                                                    <li class="staron" style="width: 12px;z-index: 5;"></li>
+                                                                    <li class="staron" style="width: 24px;z-index: 4;"></li>
+                                                                    <li class="staron" style="width: 36px;z-index: 3;"></li>
+                                                                    <li class="staron" style="width: 48px;z-index: 2;"></li>
+                                                                    <li class="staron" style="width: 58px;z-index: 1;"></li>
+                                                                </ul>
+                                                                <span id="startTotal">(0)</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="quota-list break-word">
+                                                    <p>{{ g.gintroduce|safe }}</p>
+                                                    <p></p>
+                                                </div>
+                                                <div class="nocon" id="quotanone" style="display: none">
+                                                    <div class="text">
+                                                        <p>产品指标</p>
+                                                        <p class="tips">这部分内容在“创建批次”时填写</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="main-right">
+                                            <div class="company_profile">
+                                                <div class="clearfix">
+                                                    <i id="cplogo" class="icon-logo"></i>
+                                                    <div class="text fl">
+                                                        <p class="name nowrap" id="companyname">
+                                                            <span title="{{ g.company_name }}">{{ g.company_name|slice:'8'}}...</span>
+                                                        </p>
+                                                        <p class="flag" id="check_c">营业执照已验证</p>
+                                                    </div>
+                                                </div>
+                                                <ul class="info">
+                                                    <li>
+                                                        <label class="label-like">负责人</label>
+                                                        <p id="headUser">{{ g.company_president }}</p>
+                                                    </li>
+                                                    <li>
+                                                        <label class="label-like">地址</label>
+                                                        <p id="company-address">{{ g.company_address}}</p>
+                                                    </li>
+                                                </ul>
+                                                <div class="map"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {#  产品简介#}
+                                    <div class="mod_product product-brief clearfix">
+                                        <div class="mod_product_left">
+                                            <div class="hd">
+                                                <i class="icon ic_brief"></i>
+                                                产品简介
+                                                <span id="Span5"></span>
+                                            </div>
+                                        </div>
+                                        <div class="mod_product_right">
+                                            <div class="brief" id="proremark">
+                                                <p>
+                                                    <span>{{ g.gcontent|safe}}</span>
+                                                </p>
+                                                <p><br></p>
+                                            </div>
+                                            <div class="nocon" id="proremarknone" style="display: none;">还没有产品简介</div>
+                                        </div>
+                                    </div>
+                                    {# 溯源档案 #}
+                                    <div class="mod_product product-quota">
+                                        <div class="mod_product_left">
+                                            <div class="hd">
+                                                <i class="icon ic_track"></i>
+                                                溯源档案
+                                            </div>
+                                        </div>
+                                        <div class="mod_product_right">
+                                            <div class="track-list">
+                                                <ul>
+                                                    {% if growimages %}
+                                                        <li id="Moudle_9100" class="Moudle" style="display: list-item;">
+                                                            <p class="circle_image">
+                                                                <span class="bg_circle btn_images"><i class="icon ic_images"></i></span>
+                                                            </p>
+                                                            <p>全生长期图片</p>
+                                                            <p class="action">
+                                                                <!-- 按钮触发模态框 -->
+                                                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">
+                                                                    查看图片
+                                                                </button>
+                                                                <!-- 模态框（Modal） -->
+                                                                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-lg" style="position: relative;top: 15%;width: 800px;height:600px" >
+                                                                        <div class="modal-content" style="width: 800px">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                                                    &times;
+                                                                                </button>
+                                                                                <h4 class="modal-title" id="myModalLabel">
+                                                                                    全生长周期图片
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div class="modal-body" style="width: 800px;height: 500px;">
+                                                                                <div class="center_con clearfix">
+                                                                                    <div class="slide fl">
+                                                                                        <ul class="slide_pics">
+                                                                                            {% for item in growimages %}
+                                                                                                <li>
+                                                                                                    <img style="height: 380px" src="/static/{{ item.growimage }}" alt="幻灯片">
+                                                                                                    <div style="font-size: 20px">备注</div>
+                                                                                                    <br>
+                                                                                                    <div style="font-size: 25px">{{ item.beizhu }}</div>
+                                                                                                </li>
+
+                                                                                            {% endfor %}
+                                                                                        </ul>
+                                                                                        <div class="prev"></div>
+                                                                                        <div class="next"></div>
+                                                                                        <ul class="points"></ul>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </p>
+                                                        </li>
+                                                    {% endif %}
+
+                                                    {% if fertilizers %}
+                                                        <li id="Moudle_9101" class="Moudle" style="display: list-item;">
+                                                            <p class="circle_image">
+                                                                <span class="bg_circle btn_fertilizer"><i class="icon ic_fertilizer"></i></span>
+                                                            </p>
+                                                            <p>肥料使用表</p>
+                                                            <p class="action">
+                                                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">查看记录</button>
+                                                                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog" style="position: relative;top: 15%;width: 800px;height:443px">
+                                                                        <div class="modal-content" style="width: 800px">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                                                    &times;
+                                                                                </button>
+                                                                                <h4 class="modal-title" id="myModalLabel">
+                                                                                    肥料使用表
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="chemicals-dialog" style="padding: 15px 10px">
+                                                                                    <div class="bd">
+                                                                                        <div class="chemicals-list fertilizer-list">
+                                                                                            <div class="fertilizer-box">
+                                                                                                <div class="tb-void clearfix">
+                                                                                                    <table>
+                                                                                                        <thead>
+                                                                                                            <tr>
+                                                                                                                <th width="15%" scope="col">
+                                                                                                                    使用时期
+                                                                                                                </th>
+                                                                                                                <th width="20%" scope="col">
+                                                                                                                    名称
+                                                                                                                </th>
+                                                                                                                <th width="15%" scope="col">
+                                                                                                                    类型
+                                                                                                                </th>
+                                                                                                                <th width="15%" scope="col">
+                                                                                                                    用量
+                                                                                                                </th>
+                                                                                                                <th width="18%" scope="col">
+                                                                                                                    品牌
+                                                                                                                </th>
+                                                                                                                <th width="17%" scope="col">
+                                                                                                                    供应商
+                                                                                                                </th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody id="tb_fertilizer">
+                                                                                                            {% for item in fertilizers %}
+                                                                                                                <tr>
+                                                                                                                    <td>{{ item.usetime }}</td>
+                                                                                                                    <td>{{ item.fertilizername }}</td>
+                                                                                                                    <td>{{ item.leixing }}</td>
+                                                                                                                    <td>{{ item.yongliang }}</td>
+                                                                                                                    <td>{{ item.pingpai }}</td>
+                                                                                                                    <td>{{ item.gongyingshang }}</td>
+                                                                                                                </tr>
+                                                                                                            {% endfor %}
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </p>
+                                                        </li>
+                                                    {% endif %}
+                                                    
+                                                {% if  %}
+                                                
+                                                {% endif %}
+                                                    <li id="Moudle_9102" class="Moudle" style="display: list-item;">
+                                                        <p class="circle_image">
+                                                            <span class="bg_circle btn_chemicals"><i class="icon ic_chemicals"></i></span>
+                                                        </p>
+                                                        <p>农药使用表</p>
+                                                        <p class="action">
+                                                            <a href="javascript:void(0)" class="btn_view btn_chemicals">查看记录</a>
+                                                        </p>
+                                                    </li>
+                                                    <li>
+                                                        <p class="circle_image">
+                                                            <span class="bg_circle btn_viewVideo"><i class="icon ic_cctv"></i></span>
+                                                        </p>
+                                                        <p>实时监控视频</p>
+                                                        <p class="action">
+                                                            <a href="javascript:void(0)" class="btn_view btn_viewVideo">查看视频</a>
+                                                        </p>
+                                                    </li>
+                                                    <li id="Moudle_9109" class="Moudle" style="display: list-item;">
+                                                        <p class="circle_image">
+                                                            <span class="bg_circle btn_environment"><i class="icon ic_environment"></i></span>
+                                                        </p>
+                                                        <p>关键环境数据</p>
+                                                        <p class="action">
+                                                            <a href="javascript:void(0)" class="btn_view btn_environment">查看记录</a>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {# 公司简介 #}
+                                    <div class="mod_product company-brief clearfix ">
+                                        <div class="mod_product_left">
+                                            <div class="hd">
+                                                <i class="icon ic_brief"></i>
+                                                公司简介
+                                                <span id="Span5"></span>
+                                            </div>
+                                        </div>
+                                        <div class="mod_product_right">
+                                            <div class="brief" id="comremark">
+                                                {% if g.company_detail%}
+                                                    <p>
+                                                        <span>{{ g.company_detail|safe }}</span>
+                                                    </p>
+                                                {% else %}
+                                                    <div class="nocon" id="proremarknone" style="display: none;">还没有产品简介</div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {#  #}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
