@@ -18,9 +18,12 @@ class PesticideAdmin(admin.TabularInline):
     model = Pesticide
 
 
+class EnvironmentAdmin(admin.TabularInline):
+    model = Environment
+
 class GoodsInfoAdmin(admin.ModelAdmin):
 
-    inlines = [GrowImageAdmin,FertilizerAdmin,PesticideAdmin]
+    inlines = [GrowImageAdmin,FertilizerAdmin,PesticideAdmin,EnvironmentAdmin]
     list_per_page = 10
     list_display = ['id','gtitle','gtime','gclick','gtype']
     search_fields = ['gtitle']
@@ -28,6 +31,6 @@ class GoodsInfoAdmin(admin.ModelAdmin):
 
 
 
+
 admin.site.register(TypeInfo,TypeInfoAdmin)
 admin.site.register(GoodsInfo,GoodsInfoAdmin)
-

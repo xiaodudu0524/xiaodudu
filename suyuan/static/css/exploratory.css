@@ -47,8 +47,8 @@ body{ background:#e5e5e5;}
 .chemicals-list .tb-void th{padding:15px 20px 5px 20px}
 .chemicals-list .tb-void tbody td{height:28px}
 .chemicals-list .tb-void tbody tr td:first-child,.chemicals-list .tb-void tr th:first-child{padding-left:0}
-.chemicals-dialog .tabs li,.environment-records-dialog .tabs li{ float:left;height:28px; line-height:26px;border:1px solid #227744; text-align:center;width:118px;cursor:pointer; color:#226644}
-.chemicals-dialog .tabs li.current,.environment-records-dialog .tabs li.current{ background:#227744; color:#fff}
+.chemicals-dialog .tabs li,.environment-records-dialog .tabs.tabs li{ float:left;height:28px; line-height:26px;border:1px solid #227744; text-align:center;width:118px;cursor:pointer; color:#226644}
+.chemicals-dialog .tabs li.current,.environment-records-dialog li.current{ background:#227744; color:#fff}
 .chemicals-dialog .tabs li:last-child,.environment-records-dialog .tabs li:last-child{margin-left:-1px;border-top-right-radius: 5px;border-bottom-right-radius: 5px}
 .chemicals-dialog .tabs li:first-child,.environment-records-dialog .tabs li:first-child{border-top-left-radius: 5px;border-bottom-left-radius: 5px}
 

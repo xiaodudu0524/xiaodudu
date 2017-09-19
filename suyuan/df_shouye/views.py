@@ -3,7 +3,11 @@ from django.shortcuts import render,HttpResponse
 from models import *
 from django.core.paginator import Paginator,Page
 from django.utils.six import BytesIO
+from django.http import JsonResponse,HttpResponseRedirect
+import json
 import qrcode
+import time
+
 # Create your views here.
 def index(request):
     typelist = TypeInfo.objects.all()#
@@ -48,11 +52,19 @@ def detail(request,id):
 
     growimages = goods.growimage_set.all()
     fertilizers = goods.fertilizer_set.all()
+    pesticides = goods.pesticide_set.all()
+    context = {'title': goods.gtype.ttitle, 'g': goods, 'growimages': growimages, 'fertilizers': fertilizers,'pesticides':pesticides}
+    return render(request, 'df_shouye/detail.html', context)
 
+def env_handle(request):
+    data = [['Date.UTC(2013,5,2)',0.7695],
+            ['Date.UTC(2013,5,3)',0.7648],
+            ['Date.UTC(2013,5,4)',0.7645],
+            ['Date.UTC(2013,5,5)',0.7638],
+            ['Date.UTC(2013,5,6)',0.7549]]
 
-    context = {'title':goods.gtype.ttitle,'g':goods,'growimages':growimages,'fertilizers':fertilizers}
-    return render(request,'df_shouye/detail.html',context)
-
+    json_data = json.dumps(data)
+    return HttpResponse(json_data, content_type='application/json')
 
 
 
@@ -65,3 +77,15 @@ def generate_qrcode(request,data):
     response = HttpResponse(image_stream,content_type="image/png")
     return response
 
+def data(request):
+    file = open('/home/shixianzhang/untitled/123.txt')
+    arr = []
+    while 1:
+        lines = file.readline()
+        if not lines:
+            break
+        line = lines.splitlines()
+        data = line[0].split(' ')
+        arr.append(data)
+    json_data = json.dumps(arr)
+    return HttpResponse(json_data,content_type='application/json')

@@ -43,11 +43,20 @@ class Fertilizer(models.Model):
     gongyingshang = models.CharField(max_length=50)
     ftype = models.ForeignKey(GoodsInfo)
 
-
+#农药使用
 class Pesticide(models.Model):
-    useTime = models.DateTimeField()
+    useTime = models.DateField()
     pesticidename = models.CharField(max_length=50)
     yongLiang = models.CharField(max_length=50)
     pingPai = models.CharField(max_length=50)
     gongYingshang = models.CharField(max_length=50)
     pType = models.ForeignKey(GoodsInfo)
+
+
+class Environment(models.Model):
+    air_temp = models.FileField(upload_to='airtemp',blank=True)
+    air_hum = models.FileField(upload_to='airhum',blank=True)
+    soil_temp = models.FileField(upload_to='soiltemp',blank=True)
+    soil_hum = models.FileField(upload_to='soilhum',blank=True)
+    pH_value = models.FileField(upload_to='pHvalue',blank=True)
+    envType = models.ForeignKey(GoodsInfo)

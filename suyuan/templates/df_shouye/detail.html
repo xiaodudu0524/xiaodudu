@@ -20,7 +20,6 @@
             background: #116633 !important;
         }
 </style>
-
 <div class="midwrapper">
     <div class="clearfix">
         <div id="danganContent" class="clearfix">
@@ -35,7 +34,11 @@
             <script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
             <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
 	        <script type="text/javascript" src="/static/js/slide.js"></script>
-
+            <script type="text/javascript" src="/static/HighChart/jquery-1.8.3.min.js"></script>
+            <script type="text/javascript" src="/static/HighChart/highcharts.js"></script>
+            <script type="text/javascript" src="/static/HighChart/exporting.js"></script>
+            <script type="text/javascript" src="/static/HighChart/highcharts-zh_CN.js"></script>
+            <script type="text/javascript" src="/static/HighChart/env.js"></script>
             <div class="newArchives-wrap">
                 <div class="NewArchivesDetail">
                     <div id="content" class="exploratory-wrap clearfix">
@@ -107,7 +110,7 @@
                                                     <i id="cplogo" class="icon-logo"></i>
                                                     <div class="text fl">
                                                         <p class="name nowrap" id="companyname">
-                                                            <span title="{{ g.company_name }}">{{ g.company_name|slice:'8'}}...</span>
+                                                          <span title="{{ g.company_name }}">{{ g.company_name|slice:'8'}}...</span>
                                                         </p>
                                                         <p class="flag" id="check_c">营业执照已验证</p>
                                                     </div>
@@ -287,19 +290,80 @@
                                                             </p>
                                                         </li>
                                                     {% endif %}
-                                                    
-                                                {% if  %}
-                                                
-                                                {% endif %}
-                                                    <li id="Moudle_9102" class="Moudle" style="display: list-item;">
-                                                        <p class="circle_image">
-                                                            <span class="bg_circle btn_chemicals"><i class="icon ic_chemicals"></i></span>
-                                                        </p>
-                                                        <p>农药使用表</p>
-                                                        <p class="action">
-                                                            <a href="javascript:void(0)" class="btn_view btn_chemicals">查看记录</a>
-                                                        </p>
-                                                    </li>
+                                                    {% if pesticides %}
+                                                        <li id="Moudle_9102" class="Moudle" style="display: list-item;">
+                                                            <p class="circle_image">
+                                                                <span class="bg_circle btn_chemicals"><i class="icon ic_chemicals"></i></span>
+                                                            </p>
+                                                            <p>农药使用表</p>
+                                                            <p class="action">
+                                                                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal3">查看记录</button>
+                                                                <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog" style="position: relative;top: 15%;width: 800px;height:443px">
+                                                                        <div class="modal-content" style="width: 800px">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                                                    &times;
+                                                                                </button>
+                                                                                <h4 class="modal-title" id="myModalLabel">
+                                                                                    农药使用表
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="chemicals-dialog" style="padding: 15px 10px">
+                                                                                    <div class="bd">
+                                                                                        <div class="chemicals-list fertilizer-list">
+                                                                                            <div class="fertilizer-box">
+                                                                                                <div class="tb-void clearfix">
+                                                                                                    <table>
+                                                                                                        <thead>
+                                                                                                            <tr>
+                                                                                                                <th width="15%" scope="col">
+                                                                                                                    使用时期
+                                                                                                                </th>
+                                                                                                                <th width="19%" scope="col">
+                                                                                                                    名称
+                                                                                                                </th>
+                                                                                                                <th width="24%" scope="col">
+                                                                                                                    用量
+                                                                                                                </th>
+                                                                                                                <th width="19%" scope="col">
+                                                                                                                    品牌
+                                                                                                                </th>
+                                                                                                                <th width="23%" scope="col">
+                                                                                                                    供应商
+                                                                                                                </th>
+                                                                                                            </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody id="tb_pesticide">
+                                                                                                            {% for item in pesticides %}
+                                                                                                                <tr>
+                                                                                                                    <td>{{ item.useTime }}</td>
+                                                                                                                    <td>{{ item.pesticidename }}</td>
+                                                                                                                    <td>{{ item.yongLiang }}</td>
+                                                                                                                    <td>{{ item.pingPai }}</td>
+                                                                                                                    <td>{{ item.gongYingshang }}</td>
+                                                                                                                </tr>
+                                                                                                            {% endfor %}
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </p>
+                                                        </li>
+                                                    {% endif %}
+
                                                     <li>
                                                         <p class="circle_image">
                                                             <span class="bg_circle btn_viewVideo"><i class="icon ic_cctv"></i></span>
@@ -309,13 +373,86 @@
                                                             <a href="javascript:void(0)" class="btn_view btn_viewVideo">查看视频</a>
                                                         </p>
                                                     </li>
+
                                                     <li id="Moudle_9109" class="Moudle" style="display: list-item;">
                                                         <p class="circle_image">
                                                             <span class="bg_circle btn_environment"><i class="icon ic_environment"></i></span>
                                                         </p>
                                                         <p>关键环境数据</p>
                                                         <p class="action">
-                                                            <a href="javascript:void(0)" class="btn_view btn_environment">查看记录</a>
+                                                            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal5" value="{{g.id}}" id="env_data">
+                                                                查看记录
+                                                            </button>
+                                                            <!-- 模态框（Modal） -->
+                                                            <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" style="position: relative;top: 15%;width: 800px">
+                                                                    <div class="modal-content ">
+                                                                        <div class="modal-header" style="border-bottom: 0px;">
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                                                &times;
+                                                                            </button>
+                                                                            <h4 class="modal-title" id="myModalLabel">关键环境数据</h4>
+                                                                            <ul id="myTab" class="nav nav-tabs">
+                                                                                    <li class="active" style="width: 15%;">
+                                                                                        <a href="#home" data-toggle="tab">空气湿度</a>
+                                                                                    </li>
+                                                                                    <li style="width: 15%">
+                                                                                        <a href="#kqwd" data-toggle="tab">空气温度</a>
+                                                                                    </li>
+                                                                                    <li style="width: 15%">
+                                                                                        <a href="#trsd" data-toggle="tab">土壤湿度</a>
+                                                                                    </li>
+                                                                                    <li style="width: 15%">
+                                                                                        <a href="#trwd" data-toggle="tab">土壤温度</a>
+                                                                                    </li>
+                                                                                    <li style="width: 15%">
+                                                                                        <a href="#trsf" data-toggle="tab">土壤水分</a>
+                                                                                    </li>
+                                                                                    <li style="width: 15%">
+                                                                                        <a href="#sjd" data-toggle="tab">酸碱度</a>
+                                                                                    </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <!--<div id="main" style="width: 600px;height: 400px"></div>-->
+                                                                            <div id="myTabContent" class="tab-content" style="width: 780px;height: 400px">
+                                                                                <div class="tab-pane fade in active" id="home">
+                                                                                    <div id="container1" style="height: 400px; min-width: 310px"></div>
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="kqwd">
+                                                                                    <!--<div id="container" style="height: 400px; min-width: 310px"></div>-->
+                                                                                    <p>kqwd</p>
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="trsd">
+                                                                                    <!--<div id="container" style="height: 400px; min-width: 310px"></div>-->
+                                                                                    <p>trsd</p>
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="trwd">
+                                                                                    <!--<div id="container" style="height: 400px; min-width: 310px"></div>-->
+                                                                                    <p>trwd</p>
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="trsf">
+                                                                                    <!--<div id="container" style="height: 400px; min-width: 310px"></div>-->
+                                                                                    <p>trsf</p>
+                                                                                </div>
+                                                                                <div class="tab-pane fade" id="sjd">
+                                                                                    <!--<div id="container" style="height: 400px; min-width: 310px"></div>-->
+                                                                                    <p>sjd</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <ul>
+                                                                                <li data-type="line" style="cursor: pointer;display: inline-block;padding: 4px;">折线图</li>
+                                                                                <li data-type="spline" style="cursor: pointer;display: inline-block;padding: 4px;">曲线图</li>
+                                                                                <li data-type="area" style="cursor: pointer;display: inline-block;padding: 4px;">面积图</li>
+                                                                                <li data-type="column" style="cursor: pointer;display: inline-block;padding: 4px;">柱状体</li>
+                                                                            </ul>
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </p>
                                                     </li>
                                                 </ul>

@@ -4,6 +4,7 @@ urlpatterns=[
     url(r'^index/$',views.index),
     url(r'^list(\d+)_(\d+)_(\d+)/$',views.list),
     url(r'^qrcode/(.+)/$',views.generate_qrcode,name='qrcode'),
-    url('^(\d+)/$', views.detail),
-
+    url(r'^(\d+)/$', views.detail),
+    url(r'^env_handle/$',views.env_handle),
+    url(r'^data/$',views.data),
 ]
