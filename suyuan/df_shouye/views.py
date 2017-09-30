@@ -6,7 +6,7 @@ from django.utils.six import BytesIO
 from django.http import JsonResponse,HttpResponseRedirect
 import json
 import qrcode
-import time
+import os
 
 # Create your views here.
 def index(request):
@@ -53,7 +53,8 @@ def detail(request,id):
     growimages = goods.growimage_set.all()
     fertilizers = goods.fertilizer_set.all()
     pesticides = goods.pesticide_set.all()
-    context = {'title': goods.gtype.ttitle, 'g': goods, 'growimages': growimages, 'fertilizers': fertilizers,'pesticides':pesticides}
+    environments = goods.environment_set.all()
+    context = {'title': goods.gtype.ttitle, 'g': goods, 'environments':environments,'growimages': growimages, 'fertilizers': fertilizers,'pesticides':pesticides}
     return render(request, 'df_shouye/detail.html', context)
 
 def env_handle(request):
@@ -77,8 +78,84 @@ def generate_qrcode(request,data):
     response = HttpResponse(image_stream,content_type="image/png")
     return response
 
-def data(request):
-    file = open('/home/shixianzhang/untitled/123.txt')
+def data_1(request):
+    id = request.GET.get('env_data_id')
+    # print id
+    goods = GoodsInfo.objects.get(pk=int(id))
+    env = goods.environment_set.all()[0]
+    env_path = str(env.air_temp)    #airtemp/123_nTldbzy.txt
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    #print BASE_DIR   #/home/shixianzhang/project/suyuan
+    sep = BASE_DIR,'static',env_path
+    path = '/'.join(sep)
+    file = open(path)
+    arr = []
+    while 1:
+        lines = file.readline()
+        if not lines:
+            break
+        line = lines.splitlines()
+        data = line[0].split(' ')
+        arr.append(data)
+    json_data = json.dumps(arr)
+    return HttpResponse(json_data,content_type='application/json')
+
+def data_2(request):
+    id = request.GET.get('env_data_id')
+    # print id
+    goods = GoodsInfo.objects.get(pk=int(id))
+    env = goods.environment_set.all()[0]
+    env_path = str(env.air_hum)    #airtemp/123_nTldbzy.txt
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    #print BASE_DIR   #/home/shixianzhang/project/suyuan
+    sep = BASE_DIR,'static',env_path
+    path = '/'.join(sep)
+    file = open(path)
+    arr = []
+    while 1:
+        lines = file.readline()
+        if not lines:
+            break
+        line = lines.splitlines()
+        data = line[0].split(' ')
+        arr.append(data)
+    json_data = json.dumps(arr)
+    return HttpResponse(json_data,content_type='application/json')
+
+def data_3(request):
+    id = request.GET.get('env_data_id')
+    # print id
+    goods = GoodsInfo.objects.get(pk=int(id))
+    env = goods.environment_set.all()[0]
+    env_path = str(env.soil_temp)    #airtemp/123_nTldbzy.txt
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    #print BASE_DIR   #/home/shixianzhang/project/suyuan
+    sep = BASE_DIR,'static',env_path
+    path = '/'.join(sep)
+    file = open(path)
+    arr = []
+    while 1:
+        lines = file.readline()
+        if not lines:
+            break
+        line = lines.splitlines()
+        data = line[0].split(' ')
+        arr.append(data)
+    json_data = json.dumps(arr)
+    return HttpResponse(json_data,content_type='application/json')
+
+
+def data_4(request):
+    id = request.GET.get('env_data_id')
+    # print id
+    goods = GoodsInfo.objects.get(pk=int(id))
+    env = goods.environment_set.all()[0]
+    env_path = str(env.soil_hum)    #airtemp/123_nTldbzy.txt
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    #print BASE_DIR   #/home/shixianzhang/project/suyuan
+    sep = BASE_DIR,'static',env_path
+    path = '/'.join(sep)
+    file = open(path)
     arr = []
     while 1:
         lines = file.readline()

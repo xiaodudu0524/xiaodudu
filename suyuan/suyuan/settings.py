@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'df_user',
     'tinymce',
     'df_shouye',
+    'haystack',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -127,10 +128,9 @@ TINYMCE_DEFAULT_CONFIG ={
     'height':400,
 }
 HAYSTACK_CONNECTIONS = {
-    'default':{
-        #使用whoosh引擎
-        'ENGINE':'hatstack.backends.whoosh_cn_backend.WhooshEngine',
-        #索引文件路径
-        'PATH':os.path.join(BASE_DIR,'whoosh_index'),
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
     }
 }
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

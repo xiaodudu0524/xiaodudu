@@ -1,0 +1,4 @@
+{{object.gtitle}}
+{{object.gintroduce}}
+{{object.gcontent}}
+{{object.company_name}}

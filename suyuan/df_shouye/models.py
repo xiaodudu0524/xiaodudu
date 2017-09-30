@@ -52,11 +52,11 @@ class Pesticide(models.Model):
     gongYingshang = models.CharField(max_length=50)
     pType = models.ForeignKey(GoodsInfo)
 
-
+#环境数据
 class Environment(models.Model):
     air_temp = models.FileField(upload_to='airtemp',blank=True)
     air_hum = models.FileField(upload_to='airhum',blank=True)
     soil_temp = models.FileField(upload_to='soiltemp',blank=True)
     soil_hum = models.FileField(upload_to='soilhum',blank=True)
     pH_value = models.FileField(upload_to='pHvalue',blank=True)
-    envType = models.ForeignKey(GoodsInfo)
+    eType = models.ForeignKey(GoodsInfo)

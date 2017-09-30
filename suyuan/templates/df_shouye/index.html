@@ -9,10 +9,10 @@
 {#<script charset="Shift_JIS" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.js"></script>#}
 <script>
     $(function () {
-        $(".icon-search").click(function () {
-            alert('asdasdas')
+        $('.icon-search').click(function () {
+            document.getElementById('myForm').submit();
         });
-    })
+    });
 </script>
 {%endblock head%}
 
@@ -34,10 +34,11 @@
          </div>
      </div>
 
+
      <div class="header">
         <div class="w1030">
          <div class="logo fl">
-{#             <a href="/AgriProTraceability/queryEntrance.html"><i class="logo_tcloudit"></i></a>#}
+             <!--<a href="/AgriProTraceability/queryEntrance.html"><i class="logo_tcloudit"></i></a>-->
              <div style="width:160px;height: 70px;">
              <embed wmode="transparent" autostart="true" loop="-1" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_tr.swf" quality="high" bgcolor="#ffffff" width="160" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
              </div>
@@ -50,13 +51,15 @@
          </ul>
          </div>
          <div class="search fr">
-             <input  class="s-input search-input" placeholder="搜索产品" />
-             <a class="btn-search"><i class="icon-search"></i></a>
+             <form action="/search/" method="get" target="_blank" id="myForm">
+                 <input  class="s-input search-input" placeholder="搜索产品" type="text" name="q"/>
+                 <a class="btn-search"><i class="icon-search"></i></a>
+             </form>
          </div>
-      </div>
+       </div>
      </div>
 </div>
-{#    #}
+
 <div class="midwrapper">
     <div class="w1030 clearfix" id="prolist">
        <div class="main">

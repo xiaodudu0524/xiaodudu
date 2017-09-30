@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^user/',include('df_user.urls')),
     url(r'^tinymce/',include('tinymce.urls')),
     url(r'^shouye/',include('df_shouye.urls')),
-
+    url(r'^search/', include('haystack.urls')),
 ]
